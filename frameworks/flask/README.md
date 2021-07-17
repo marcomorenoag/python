@@ -2,4 +2,4 @@
 This sub-repository contains tutorials about Python Flask Framework
 
 ## Table of Contents
-1. Flask Basics with Data Structures
+1. [Flask Basics with Data Structures](FlaskAPI/)
