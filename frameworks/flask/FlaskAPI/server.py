@@ -7,8 +7,10 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import event
 from sqlalchemy.engine import Engine
 
+import random
 import linked_list
 import hash_table
+import binary_search_tree
 
 
 # Initialize our Flask app, behind scenes Flask use a WSGI to connect Python App with the server
@@ -145,9 +147,22 @@ def create_blog_post(user_id):
   return jsonify({ 'message': 'New blog post created' }), 200
 
 
-@app.route('/blog_post/<user_id>', methods = ['GET'])
-def get_all_blog_posts(user_id):
-  pass
+@app.route('/blog_post/<blog_post_id>', methods = ['GET'])
+def get_all_blog_posts(blog_post_id):
+  blog_posts = BlogPost.query.all()
+  random.shuffle(blog_posts) # random order due query.all() retrieve them ascending, this increases chances of have a balanced BST
+  bst = binary_search_tree.BinarySearchTree()
+  for post in blog_posts:
+    bst.insert({
+      'id': post.id,
+      'title': post.title,
+      'body': post.body,
+      'user_id': post.user_id,
+    })
+  post = bst.search(blog_post_id)
+  if not post:
+    return jsonify({ 'message': 'Post not found'})
+  return jsonify(post)
 
 @app.route('/blog_post/<blog_post_id>', methods = ['GET'])
 def get_one_blog_post(blog_post_id):
