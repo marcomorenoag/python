@@ -5,6 +5,12 @@ name = "pypi"
 
 [packages]
 uvicorn = "*"
+jupyter = "*"
+classifier = "*"
+spanish-sentiment-analysis = "*"
+numpy = "*"
+scipy = "*"
+scikit-learn = "==0.19.2"
 
 [dev-packages]
 
