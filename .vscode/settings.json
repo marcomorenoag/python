@@ -2,6 +2,7 @@
   "conventionalCommits.scopes": [
     "frameworks",
     "several",
-    "code-challenges"
+    "code-challenges",
+    "language_features"
   ]
 }
