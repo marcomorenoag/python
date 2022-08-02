@@ -1,6 +1,7 @@
 {
   "conventionalCommits.scopes": [
     "frameworks",
-    "several"
+    "several",
+    "code-challenges"
   ]
 }

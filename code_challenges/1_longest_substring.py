@@ -22,22 +22,22 @@
 # Output: 0
 
 
-def longest_substring(raw_string):
-    if not raw_string:
+def longest_substring(word):
+    if not word:
         return 0
 
     substring = []
-    max_lenght = 0
+    max_length = 0
 
-    for letter in raw_string:
-        if not substring[letter]:
+    for letter in word:
+        if not letter in substring:
             substring.append(letter)
             continue
-
-        max_lenght = max(max_lenght, len(substring))
+        max_length = max(max_length, len(substring))
+        substring.clear()
 
     return len(substring)
 
 
 if __name__ == '__main__':
-    print(longest_substring(""))
+    print(longest_substring("pwwkew"))
