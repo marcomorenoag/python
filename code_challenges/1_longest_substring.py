@@ -21,23 +21,29 @@
 # Input: s = ""
 # Output: 0
 
+# Example 5:
+# Input: s = "dvdf"
+# Output: 0
 
-def longest_substring(word):
-    if not word:
+
+def lengthOfLongestSubstring(s: str) -> int:
+    if not s:
         return 0
+    if len(s) == 1:
+        return 1
+        
+    indexes = {}
+    start_idx = 0
+    max_substr_len = 0
 
-    substring = []
-    max_length = 0
+    for idx in range(len(s)):
+        letter = s[idx]
+        if letter in indexes and indexes[letter] >= start_idx:
+            start_idx = indexes[letter] + 1
+        max_substr_len = max(max_substr_len, idx - start_idx + 1)
+        indexes[letter] = idx
 
-    for letter in word:
-        if not letter in substring:
-            substring.append(letter)
-            continue
-        max_length = max(max_length, len(substring))
-        substring.clear()
-
-    return len(substring)
-
+    return max_substr_len
 
 if __name__ == '__main__':
-    print(longest_substring("pwwkew"))
+    print(lengthOfLongestSubstring("abcabcbb"))
