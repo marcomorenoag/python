@@ -36,10 +36,12 @@ def get_set_delete(person: Person | PersonSlots):
 def main():
     person = Person("Jonh", "123 Main St", "jonh@doe.com")
     person_slots = PersonSlots("Jonh", "123 Main St", "jonh@doe.com")
-    no_slots = min(timeit.repeat(
-        partial(get_set_delete, person), number=1_000_000))
-    slots = min(timeit.repeat(
-        partial(get_set_delete, person_slots), number=1_000_000))
+    no_slots = min(timeit.repeat(partial(get_set_delete, person), number=1_000_000))
+    slots = min(timeit.repeat(partial(get_set_delete, person_slots), number=1_000_000))
     print(f"No slots: {no_slots}")
     print(f"Slots: {slots}")
     print(f"% performance improvement: {(no_slots - slots) / no_slots:.2%}")
+
+
+if __name__ == "__main__":
+    main()
