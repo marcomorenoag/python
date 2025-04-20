@@ -5,3 +5,6 @@ This sub-repository contains tutorials about Data Structures
 1. Decorators
 2. Lists
 3. Print
+4. Data classes
+5. Destructuring
+6. Concurrency
